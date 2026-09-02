@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>North Cipher Valley — We don't have a website</title>
+<meta name="description" content="North Cipher Valley Inc., Sudbury, Ontario. We don't have a website. You're looking at it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0;1,9..144,300..700,0&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #0f2a26;
+    --ink: #e9e5d8;
+    --ink-soft: #b8b3a3;
+    --rule: #26443f;
+    --brass: #c9a961;
+    --brass-dim: #8f7a4a;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --paper: #eceee9; --ink: #0f2a26; --ink-soft: #4b5d59; --rule: #cfd4cd; --brass: #8a6f2f; --brass-dim: #b39a5c;
+    }
+  }
+  :root[data-theme="light"] { --paper: #eceee9; --ink: #0f2a26; --ink-soft: #4b5d59; --rule: #cfd4cd; --brass: #8a6f2f; --brass-dim: #b39a5c; }
+  :root[data-theme="dark"]  { --paper: #0f2a26; --ink: #e9e5d8; --ink-soft: #b8b3a3; --rule: #26443f; --brass: #c9a961; --brass-dim: #8f7a4a; }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    font-variation-settings: "opsz" 14, "SOFT" 0; font-weight: 400; line-height: 1.5;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration-color: var(--brass-dim); text-underline-offset: 0.18em; }
+  a:hover { text-decoration-color: var(--brass); }
+  a:focus-visible { outline: 2px solid var(--brass); outline-offset: 4px; border-radius: 2px; }
+
+  .page { width: 100%; max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem 2.5rem; display: flex; flex-direction: column; flex: 1; }
+  @media (min-width: 900px) { .page { padding: 2.5rem 3rem 3rem; } }
+
+  header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 0.95rem; color: var(--ink-soft); padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+  header .brand { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 1rem; }
+  header .name { color: var(--ink); font-weight: 500; }
+  header .tag { font-style: italic; font-variation-settings: "opsz" 14, "SOFT" 20; color: var(--brass); }
+  header .loc { white-space: nowrap; }
+
+  /* Hero: text left, 3D scene right */
+  .hero { display: grid; gap: 1.5rem; align-items: center; padding: 2rem 0 1rem; }
+  @media (min-width: 900px) {
+    .hero { grid-template-columns: 1.05fr 1fr; gap: 3rem; min-height: 68vh; padding: 1rem 0; }
+  }
+  .hero-text { order: 2; }
+  .scene { order: 1; position: relative; width: 100%; aspect-ratio: 1 / 1; max-height: 42vh; }
+  @media (min-width: 900px) { .hero-text { order: 1; } .scene { order: 2; max-height: none; aspect-ratio: 1 / 1.05; } }
+  .scene canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; display: block; }
+
+  h1 {
+    margin: 0; font-size: clamp(2.6rem, 6.5vw, 5.2rem); line-height: 1.02; letter-spacing: -0.015em;
+    font-weight: 300; font-variation-settings: "opsz" 144, "SOFT" 30; text-wrap: balance; min-height: 2.04em;
+  }
+  h1 .cursor { display: inline-block; width: 0.045em; height: 0.9em; background: var(--brass); vertical-align: -0.08em; margin-left: 0.06em; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .sub { margin: 1.2rem 0 0; font-size: clamp(1.3rem, 2.4vw, 1.75rem); font-style: italic; font-variation-settings: "opsz" 40, "SOFT" 20; color: var(--brass); opacity: 0; transition: opacity 900ms ease; }
+  .sub.shown { opacity: 1; }
+  .lead { margin: 1.6rem 0 0; max-width: 30rem; font-size: clamp(1.05rem, 1.2vw + 0.6rem, 1.2rem); color: var(--ink-soft); }
+  .lead em { color: var(--ink); font-style: normal; }
+
+  /* Three points */
+  .points { display: grid; gap: 2rem; padding: 2.5rem 0 1rem; border-top: 1px solid var(--rule); margin-top: 1.5rem; }
+  @media (min-width: 720px) { .points { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; padding-top: 3rem; } }
+  .point h2 { margin: 0 0 0.6rem; font-size: clamp(1.3rem, 1.6vw + 0.5rem, 1.7rem); line-height: 1.2; font-weight: 500; font-variation-settings: "opsz" 60, "SOFT" 10; text-wrap: balance; }
+  .point p { margin: 0; color: var(--ink-soft); font-size: 1.02rem; max-width: 24rem; }
+
+  .closer { margin: 2.5rem 0 3rem; font-size: clamp(1.4rem, 2.6vw, 2.2rem); line-height: 1.25; font-weight: 400; font-variation-settings: "opsz" 96, "SOFT" 20; max-width: 34rem; text-wrap: balance; }
+  .closer span { color: var(--brass); }
+
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem 1.4rem; margin: -1.25rem 0 3.5rem; }
+  .button {
+    display: inline-block; padding: 0.85rem 1.5rem; border: 1.5px solid var(--brass); border-radius: 999px;
+    color: var(--brass); text-decoration: none; font-size: 1.05rem; font-weight: 500;
+    font-variation-settings: "opsz" 20, "SOFT" 10; transition: background 160ms ease, color 160ms ease;
+  }
+  .button:hover { background: var(--brass); color: var(--paper); }
+  .cta .alt { font-size: 0.95rem; color: var(--ink-soft); }
+
+  footer { margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: 0.95rem; color: var(--ink-soft); display: grid; gap: 0.35rem; }
+  footer .co { color: var(--ink); }
+  @media (min-width: 720px) { footer { grid-template-columns: 1fr auto; align-items: end; } footer .contact { text-align: right; } }
+
+  @media (prefers-reduced-motion: reduce) { h1 .cursor { animation: none; } .sub { transition: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <span class="brand"><span class="name">North Cipher Valley Inc.</span><span class="tag">Your imagination is the only spec we need.</span></span>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1 aria-label="We don't have a website."><span id="typed"></span><span class="cursor" aria-hidden="true"></span></h1>
+      <p class="sub" id="sub">You're looking at it.</p>
+      <p class="lead">Every client eventually asks: <em>you build software, so why don't you have a website?</em> The answer's simple.</p>
+    </div>
+    <div class="scene" id="scene" aria-hidden="true"></div>
+  </section>
+
+  <section class="points">
+    <div class="point">
+      <h2>You don't hire a plumber because his pipes look good.</h2>
+      <p>You hire him because everyone else's are broken and he's the one who fixes them.</p>
+    </div>
+    <div class="point">
+      <h2>The people who matter already know where we are.</h2>
+      <p>A website is for getting found. We'd rather be in the room.</p>
+    </div>
+    <div class="point">
+      <h2>The best closers don't put up a sign.</h2>
+      <p>Every hour polishing our page is an hour not shipping yours.</p>
+    </div>
+  </section>
+
+  <p class="closer">You're already talking to us. <span>What else would the website do?</span></p>
+
+  <div class="cta">
+    <a class="button" href="https://mail.google.com/mail/?view=cm&fs=1&to=info@northciphervalley.com&su=I%20know%20what%20I%20want" target="_blank" rel="noopener">Tell us what you want</a>
+    <span class="alt">Opens in Gmail, or <a href="mailto:info@northciphervalley.com?subject=I%20know%20what%20I%20want">use your mail app</a>.</span>
+  </div>
+
+  <footer>
+    <div>
+      <div class="co">North Cipher Valley Inc.</div>
+      <div>Your imagination is the only spec we need.</div>
+    </div>
+    <div class="contact"><a href="mailto:info@northciphervalley.com">info@northciphervalley.com</a></div>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // Typed headline
+  (function () {
+    var text = "We don\u2019t have a website.";
+    var target = document.getElementById("typed");
+    var sub = document.getElementById("sub");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) { target.textContent = text; sub.classList.add("shown"); return; }
+    var i = 0;
+    function step() {
+      if (i <= text.length) {
+        target.textContent = text.slice(0, i); i++;
+        var ch = text.charAt(i - 1);
+        setTimeout(step, ch === " " ? 110 : (ch === "." ? 400 : 55 + Math.random() * 45));
+      } else { setTimeout(function () { sub.classList.add("shown"); }, 350); }
+    }
+    setTimeout(step, 500);
+  })();
+
+  // 3D valley + cipher
+  (function () {
+    if (typeof THREE === "undefined") return;
+    var host = document.getElementById("scene");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var brass = 0xc9a961;
+
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); } catch (e) { return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setClearColor(0x000000, 0);
+    host.appendChild(renderer.domElement);
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+    camera.position.set(0, 3.2, 9);
+    camera.lookAt(0, 0.2, 0);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+    var key = new THREE.DirectionalLight(0xfff2d0, 1.1); key.position.set(4, 6, 5); scene.add(key);
+    var rim = new THREE.DirectionalLight(brass, 0.6); rim.position.set(-5, 2, -4); scene.add(rim);
+
+    var group = new THREE.Group(); scene.add(group);
+
+    // Valley terrain (wireframe)
+    var seg = 44;
+    var plane = new THREE.PlaneGeometry(14, 14, seg, seg);
+    plane.rotateX(-Math.PI / 2);
+    var pos = plane.attributes.position;
+    for (var i = 0; i < pos.count; i++) {
+      var x = pos.getX(i), z = pos.getZ(i);
+      var valley = Math.pow(Math.abs(x) / 7, 1.6) * 3.2;            // rises toward left/right edges
+      var ridges = Math.sin(x * 1.3) * Math.cos(z * 0.9) * 0.28 + Math.sin(z * 2.1 + x) * 0.12;
+      var far = Math.max(0, -z / 7) * 1.2;                            // rises toward the back
+      pos.setY(i, valley + ridges + far - 1.6);
+    }
+    plane.computeVertexNormals();
+    var wire = new THREE.LineSegments(new THREE.WireframeGeometry(plane),
+      new THREE.LineBasicMaterial({ color: brass, transparent: true, opacity: 0.32 }));
+    group.add(wire);
+
+    // Floating cipher: faceted brass solid + wire cage
+    var core = new THREE.Mesh(new THREE.IcosahedronGeometry(1.15, 0),
+      new THREE.MeshStandardMaterial({ color: brass, metalness: 0.75, roughness: 0.35, flatShading: true }));
+    core.position.y = 1.0; group.add(core);
+    var cage = new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(1.75, 1)),
+      new THREE.LineBasicMaterial({ color: brass, transparent: true, opacity: 0.45 }));
+    cage.position.y = 1.0; group.add(cage);
+    var ring = new THREE.Mesh(new THREE.TorusGeometry(2.35, 0.025, 8, 96),
+      new THREE.MeshBasicMaterial({ color: brass, transparent: true, opacity: 0.6 }));
+    ring.position.y = 1.0; ring.rotation.x = Math.PI / 2.4; group.add(ring);
+
+    var mx = 0, my = 0, tx = 0, ty = 0;
+    window.addEventListener("pointermove", function (e) {
+      tx = (e.clientX / window.innerWidth - 0.5) * 2;
+      ty = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    function resize() {
+      var w = host.clientWidth, h = host.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+    }
+    window.addEventListener("resize", resize); resize();
+
+    var t = 0;
+    function frame() {
+      if (!reduce) t += 0.008;
+      mx += (tx - mx) * 0.04; my += (ty - my) * 0.04;
+      core.rotation.y = t * 1.2; core.rotation.x = t * 0.6;
+      cage.rotation.y = -t * 0.7; cage.rotation.z = t * 0.35;
+      ring.rotation.z = t * 0.5;
+      var bob = reduce ? 0 : Math.sin(t * 2.2) * 0.12;
+      core.position.y = cage.position.y = ring.position.y = 1.0 + bob;
+      group.rotation.y = mx * 0.18; group.rotation.x = my * 0.06;
+      renderer.render(scene, camera);
+      requestAnimationFrame(frame);
+    }
+    frame();
+  })();
+</script>
+</body>
+</html>
