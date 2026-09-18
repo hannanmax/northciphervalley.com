@@ -106,8 +106,14 @@
   .page { width: 100%; max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem 2.5rem; display: flex; flex-direction: column; flex: 1; }
   @media (min-width: 900px) { .page { padding: 2.5rem 3rem 3rem; } }
 
-  header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 0.95rem; color: var(--ink-soft); padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
-  header .brand { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 1rem; }
+  .logo { display: inline-block; flex: none; width: 1.55rem; height: 1.9rem; background: var(--brass);
+    -webkit-mask: url(/assets/logo.svg) center / contain no-repeat; mask: url(/assets/logo.svg) center / contain no-repeat; }
+  .logo-lg { width: 2.6rem; height: 3.2rem; }
+  header .logo-link { display: inline-flex; line-height: 0; }
+  header .brand-main { display: inline-flex; align-items: center; gap: 0.6rem; white-space: nowrap; }
+  footer .foot-brand { display: flex; align-items: center; gap: 0.9rem; }
+  header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.95rem; color: var(--ink-soft); padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+  header .brand { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1rem; row-gap: 0.15rem; }
   header .name { color: var(--ink); font-weight: 500; }
   header .tag { font-style: italic; font-variation-settings: "opsz" 14, "SOFT" 20; color: var(--brass); }
   header .loc { white-space: nowrap; }
@@ -161,7 +167,7 @@
 <body>
 <div class="page">
   <header>
-    <span class="brand"><span class="name">North Cipher Valley Inc.</span><span class="tag">Your imagination is the only spec we need.</span></span>
+    <span class="brand"><span class="brand-main"><a class="logo-link" href="/" aria-label="North Cipher Valley home"><span class="logo" role="img" aria-label="North Cipher Valley logo"></span></a><span class="name">North Cipher Valley Inc.</span></span><span class="tag">Your imagination is the only spec we need.</span></span>
   </header>
 
   <section class="hero">
@@ -196,9 +202,12 @@
   </div>
 
   <footer>
-    <div>
-      <div class="co">North Cipher Valley Inc.</div>
-      <div>Your imagination is the only spec we need.</div>
+    <div class="foot-brand">
+      <span class="logo logo-lg" role="img" aria-label="North Cipher Valley logo"></span>
+      <div>
+        <div class="co">North Cipher Valley Inc.</div>
+        <div>Your imagination is the only spec we need.</div>
+      </div>
     </div>
     <div class="contact"><a href="/careers">Careers</a> &middot; <a href="mailto:info@northciphervalley.com">info@northciphervalley.com</a></div>
   </footer>
