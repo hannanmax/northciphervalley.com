@@ -37,7 +37,7 @@
     "name": "North Cipher Valley Inc.",
     "@id": "https://northciphervalley.com/#organization",
     "sameAs": "https://northciphervalley.com",
-    "department": { "@type": "Organization", "name": "CiphLy", "url": "https://bio.ciphly.com" }
+    "department": { "@type": "Organization", "name": "CiphLy", "url": "https://ciphly.com", "sameAs": ["https://bio.ciphly.com", "https://apps.apple.com/ca/app/ciphly/id6747952027"] }
   },
   "jobLocation": {
     "@type": "Place",
@@ -152,6 +152,14 @@
   aside h2 { margin: 0 0 0.6rem; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brass); font-weight: 500; }
   aside p { margin: 0 0 1rem; color: var(--ink-soft); font-size: 1rem; }
   aside .alt { font-size: 0.9rem; margin: 0.9rem 0 0; }
+  .ciphly-mark { width: 1.05em; height: 1.05em; vertical-align: -0.15em; margin-right: 0.4em; color: var(--ink); flex: none; }
+  .ciphly-mark-lg { width: 2.2rem; height: 2.2rem; margin-right: 0.6rem; }
+  aside .prod-name { display: flex; align-items: center; margin: 0 0 0.75rem; font-size: 1.25rem; font-weight: 500; font-variation-settings: "opsz" 40, "SOFT" 10; }
+  aside .prod-name a { text-decoration: none; }
+  aside .prod-name a:hover { text-decoration: underline; }
+  aside .aside-sub { margin: 1.5rem 0 0.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+  aside .aside-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; font-size: 1rem; }
+  article ul.links li a:first-child { color: var(--ink); }
   .button {
     display: inline-block; padding: 0.85rem 1.5rem; border: 1.5px solid var(--brass); border-radius: 999px;
     color: var(--brass); text-decoration: none; font-size: 1.05rem; font-weight: 500;
@@ -181,7 +189,7 @@
   </section>
 
   <dl class="facts">
-    <div><dt>Product</dt><dd>CiphLy</dd></div>
+    <div><dt>Product</dt><dd><a href="https://ciphly.com" target="_blank" rel="noopener"><svg class="ciphly-mark" viewBox="0 0 453 455" role="img" aria-label="CiphLy logo"><path d="M326.581 212.01L399.356 137.86C399.356 137.86 365.859 104.478 298.261 32.9049C230.663 -38.6685 154.123 33.0097 154.123 33.0097L326.581 212.01Z" fill="currentColor"/><path d="M125.217 238.577L51.6731 314.757C51.6731 314.757 86.0908 348.497 155.581 420.873C225.072 493.249 302.472 419.556 302.472 419.556L125.217 238.577Z" fill="currentColor"/><path d="M128.767 190.151L32.7828 293.298C32.7828 293.298 -37.0904 224.405 30.368 156.145C97.8265 87.8854 128.767 55.4805 128.767 55.4805L326.613 261.101L421.513 162.611C421.513 162.611 490.104 225.827 421.513 297.282C352.922 368.736 326.613 395.771 326.613 395.771L128.767 190.151Z" fill="#00AB95"/></svg>CiphLy</a></dd></div>
     <div><dt>Location</dt><dd>Remote or hybrid, Ontario</dd></div>
     <div><dt>Hours</dt><dd>15 hrs / week</dd></div>
     <div><dt>Pay</dt><dd>$20 / hour, T4</dd></div>
@@ -193,6 +201,12 @@
       <h2>About CiphLy</h2>
       <p>CiphLy is a B2B-first bio link platform built around NFC smart keychains. Businesses, event organizers, and brands give branded keychains to their customers, students, or attendees. Every keychain opens a personal bio page for the person holding it, with the sponsoring brand’s background, logo, and links built in. One tap turns everyday swag into ongoing brand exposure, and sponsors get analytics on every tap.</p>
       <p>The platform is also open to individual creators and professionals, who can build a free profile at <a href="https://bio.ciphly.com" target="_blank" rel="noopener">bio.ciphly.com</a>, add it to Apple or Google Wallet, and share it with a tap or a link. The app is live on the App Store, the web platform is in production, and we’re a small team that ships fast.</p>
+      <p><strong>See what you’d be working on:</strong></p>
+      <ul class="links">
+        <li><a href="https://ciphly.com" target="_blank" rel="noopener">ciphly.com</a>, the product site and business offering</li>
+        <li><a href="https://bio.ciphly.com" target="_blank" rel="noopener">bio.ciphly.com</a>, the web platform: profiles, login, and dashboard. Example profile: <a href="https://bio.ciphly.com/hannanmax" target="_blank" rel="noopener">bio.ciphly.com/hannanmax</a></li>
+        <li><a href="https://apps.apple.com/ca/app/ciphly/id6747952027" target="_blank" rel="noopener">CiphLy on the App Store</a>, the Flutter app you’d own</li>
+      </ul>
 
       <h2>About the role</h2>
       <p>You’ll be CiphLy’s main developer. You will work directly with the founder, Hannan Max, who built the product and will hand it over to you piece by piece. He sets priorities and reviews your work. You write the code, ship it, and keep it running.</p>
@@ -257,6 +271,14 @@
       <p>A short note and a link to something you’ve shipped. That’s it.</p>
       <a class="button" href="https://mail.google.com/mail/?view=cm&fs=1&to=hannan.max@northciphervalley.com&cc=ceo@northciphervalley.com&su=Junior%20Developer" target="_blank" rel="noopener">Apply by email</a>
       <p class="alt">Opens in Gmail, or <a href="mailto:hannan.max@northciphervalley.com?cc=ceo@northciphervalley.com&subject=Junior%20Developer">use your mail app</a>.</p>
+      <h2 class="aside-sub">The product</h2>
+      <p class="prod-name"><svg class="ciphly-mark ciphly-mark-lg" viewBox="0 0 453 455" role="img" aria-label="CiphLy logo"><path d="M326.581 212.01L399.356 137.86C399.356 137.86 365.859 104.478 298.261 32.9049C230.663 -38.6685 154.123 33.0097 154.123 33.0097L326.581 212.01Z" fill="currentColor"/><path d="M125.217 238.577L51.6731 314.757C51.6731 314.757 86.0908 348.497 155.581 420.873C225.072 493.249 302.472 419.556 302.472 419.556L125.217 238.577Z" fill="currentColor"/><path d="M128.767 190.151L32.7828 293.298C32.7828 293.298 -37.0904 224.405 30.368 156.145C97.8265 87.8854 128.767 55.4805 128.767 55.4805L326.613 261.101L421.513 162.611C421.513 162.611 490.104 225.827 421.513 297.282C352.922 368.736 326.613 395.771 326.613 395.771L128.767 190.151Z" fill="#00AB95"/></svg><a href="https://ciphly.com" target="_blank" rel="noopener">CiphLy</a></p>
+      <ul class="aside-links">
+        <li><a href="https://ciphly.com" target="_blank" rel="noopener">ciphly.com</a></li>
+        <li><a href="https://bio.ciphly.com" target="_blank" rel="noopener">bio.ciphly.com</a></li>
+        <li><a href="https://apps.apple.com/ca/app/ciphly/id6747952027" target="_blank" rel="noopener">App Store</a></li>
+      </ul>
+      <p class="alt">Hiring entity: <a href="/">North Cipher Valley Inc.</a>, Greater Sudbury, Ontario.</p>
     </aside>
   </div>
 
